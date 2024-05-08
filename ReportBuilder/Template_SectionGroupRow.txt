@@ -1,0 +1,4 @@
+﻿			<div class="row">
+				<div class="col col-sm-2 mt-2 blank-line"></div>
+				<div class="col col-sm-8.order-2 mt-2[[^EMPHASISCOLOR^]]">[[^DETAIL^]]</div>
+			</div>

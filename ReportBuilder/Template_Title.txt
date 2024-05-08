@@ -1,0 +1,3 @@
+﻿			<h1>[[^TITLE^]]</h1>
+			<h2><small class="text-muted">[[^DATETIME^]]</small></h2>
+			<h2>[[^SUBTITLE^]]</h2>

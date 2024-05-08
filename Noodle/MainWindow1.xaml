@@ -1,0 +1,386 @@
+﻿<Window x:Class="WhereIsIt.MainWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WhereIsIt"
+        mc:Ignorable="d"
+        FontFamily="{StaticResource Montserrat-Regular}"
+        WindowState="Maximized"
+        Title="Solution Template">
+    <Window.Resources>
+        <Style TargetType="Grid" x:Key="IndentedGroup">
+            <Setter Property="Margin" Value="15,0,0,0"/>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="Group">
+            <Setter Property="Margin" Value="0,0,0,25"/>
+        </Style>
+        <Style TargetType="Label" x:Key="Title">
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style TargetType="Label" x:Key="GroupLabel">
+            <Setter Property="Foreground" Value="#184467"/>
+            <Setter Property="BorderBrush" Value="#184467"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Margin" Value="10,0,10,5"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="0,10,15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="0,10,15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Padding" Value="15,5,15,5"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="BorderThickness" Value="1,1,1,1"/>
+            <Setter Property="BorderBrush" Value="#BEDFEE"/>
+            <Setter Property="Margin" Value="0,0,15,30"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="uiGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer x:Name="uiScroll" 
+                      Grid.Row="0"
+                      Grid.Column="0"
+                      CanContentScroll="True"
+                      VerticalScrollBarVisibility="Auto"                      
+                      HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="uiStack" 
+                                Margin="0,0,0,50"
+                        HorizontalAlignment="Center">
+                <Label Style="{StaticResource Title}" 
+                       HorizontalAlignment="Center"
+                       Content="Where Is It?"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Db Connection -->
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="0"  
+                                Style="{StaticResource Group}">
+                        <Label Style="{StaticResource GroupLabel}"
+                               Content="Database Connection"/>
+                        <Grid Style="{StaticResource IndentedGroup}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Content="Server:"/>
+                            <TextBox x:Name="uiServer"
+                                     Grid.Row="0"
+                                     Grid.Column="1"/>
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Content="Database:"/>
+                            <TextBox x:Name="uiDatabase"
+                                     Grid.Row="0"
+                                     Grid.Column="3"/>
+                            <Label Grid.Row="1"
+                                   Grid.Column="0"
+                                   Content="Username:"/>
+                            <TextBox x:Name="uiUsername"
+                                     Grid.Row="1"
+                                     Grid.Column="1"/>
+                            <Label Grid.Row="1"
+                                   Grid.Column="2"
+                                   Content="Password:"/>
+                            <PasswordBox x:Name="uiPassword"
+                                         Grid.Row="1"
+                                         Grid.Column="3"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Search Options -->
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="0"  
+                                Style="{StaticResource Group}">
+                        <Label Style="{StaticResource GroupLabel}"
+                               Content="Options"/>
+                        <Grid Style="{StaticResource IndentedGroup}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="uiWholeWord"
+                                        Grid.Row="0"
+                                        Grid.Column="0" 
+                                      Checked="uiWholeWord_Checked"
+                                        Content="Whole Word"/>
+                            <CheckBox x:Name="uiContains"
+                                        Grid.Row="0"
+                                        Grid.Column="1"   
+                                      Checked="uiContains_Checked"
+                                        Content="Contains"/>
+                            <CheckBox x:Name="uiRegEx"
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                          Checked="uiRegEx_Checked"
+                                        Content="Use Regular Expressions"/>
+                            <CheckBox x:Name="uiCaseSensitive"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                          Checked="uiCaseSensitive_Checked"
+                                        Content="Case Sensitive"/>
+                            <CheckBox x:Name="uiSoundEx"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                      IsEnabled="False"
+                                        Content="SoundEx"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Search Targets -->
+                    <StackPanel Grid.Row="2"
+                                Grid.Column="0"  
+                                Style="{StaticResource Group}">
+                        <Label Style="{StaticResource GroupLabel}"
+                               Content="Targets"/>
+                        <Grid Style="{StaticResource IndentedGroup}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="uiTableNames"
+                                        Grid.Row="0"
+                                        Grid.Column="0"  
+                                        Content="Table Names"/>
+                            <CheckBox x:Name="uiTableColumns"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Content="Table Columns"/>
+                            <CheckBox x:Name="uiProcedureNames"
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Content="Procedure Names"/>
+                            <CheckBox x:Name="uiProcedureContent"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Content="Procedure Content"/>
+                            <CheckBox x:Name="uiFunctionNames"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Content="Function Names"/>
+                            <CheckBox x:Name="uiFunctionContent"
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Content="Function Content"/>
+                            <CheckBox x:Name="uiViewNames"
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Content="View Names"/>
+                            <CheckBox x:Name="uiViewContent"
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Content="View Content"/>
+                            <CheckBox x:Name="uiFileNames"
+                                        Grid.Row="4"
+                                        Grid.Column="0"  
+                                        Content="File Names"/>
+                            <CheckBox x:Name="uiFileContent"
+                                        Grid.Row="4"
+                                        Grid.Column="1"
+                                        Content="File Content"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Cache/Search Terms -->
+                    <StackPanel Grid.Row="3"
+                                Grid.Column="0"  
+                                Style="{StaticResource Group}">
+                        <Label Style="{StaticResource GroupLabel}"
+                               Content="Search"/>
+                        <Grid Style="{StaticResource IndentedGroup}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" 
+                                        Grid.Column="0" 
+                                        VerticalAlignment="Center"
+                                        Content="Root Folder:"/>
+                            <TextBox x:Name="uiRootFolder"
+                                            Grid.Row="0" 
+                                            Grid.Column="1"/>
+                            <Label Grid.Row="0" 
+                                    Grid.Column="2" 
+                                    VerticalAlignment="Center"
+                                    Content="File Types:"/>
+                            <ComboBox Name="uiFileType"
+                                          Grid.Row="0"
+                                          Grid.Column="3">
+                                <ComboBoxItem Content="Any"/>
+                                <ComboBoxItem Content=".Net"/>
+                                <ComboBoxItem Content="SQL"/>
+                                <ComboBoxItem Content="Text"/>
+                                <ComboBoxItem Content="VB 6"/>
+                            </ComboBox>
+                            <Label Grid.Row="1" 
+                                    Grid.Column="0" 
+                                    VerticalAlignment="Center"
+                                    Content="Search Term:"/>
+                            <TextBox x:Name="uiSearchTerm"
+                                        Grid.Row="1" 
+                                        Grid.Column="1"/>
+                            <Button x:Name="uiCache" 
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Content="Cache"
+                                    Click="uiCache_Click"/>
+                            <Button x:Name="uiSearch" 
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    Content="Search"
+                                    Click="uiSearch_Click"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Results -->
+                    <StackPanel Grid.Row="4"
+                                Grid.Column="0"
+                                Style="{StaticResource Group}">
+                        <Label Style="{StaticResource GroupLabel}"
+                               Content="WTF?"/>
+                        <Grid Style="{StaticResource IndentedGroup}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="uiResultsLabel" 
+                                   Grid.Row="0" 
+                                   Grid.Column="0" 
+                                   VerticalAlignment="Center"
+                                   Content="Found 1234 results for &quot;term&quot;"/>
+                            <Label x:Name="uiDebugLabel" 
+                                   Grid.Row="1" 
+                                   Grid.Column="0" 
+                                   VerticalAlignment="Center"
+                                   Content="Debug"/>
+                            <DataGrid x:Name="uiResults"
+                                          Grid.Row="2"
+                                      MinWidth="800"
+                                      Width="800"
+                                      MaxWidth="800"
+                                          Grid.Column="0"
+                                          AutoGenerateColumns="True"
+                                          ScrollViewer.CanContentScroll="True"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      ItemsSource="{Binding Path=Results}"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Popup Background -->
+        <Grid x:Name="uiPopupBackground"
+                      Grid.Row="0" 
+                      Grid.Column="0" 
+                      Background="#BEDFEE"
+                      Visibility="Collapsed"
+                      Opacity="0.4"
+                      HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Stretch"/>
+
+        <!-- Progress Window -->
+        <Border x:Name="uiModal"
+                        Grid.Row="0"
+                        Grid.Column="0" 
+                        Visibility="Collapsed"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Opacity="1"
+                        Padding="30"
+                        MinWidth="600"
+                        Background="Black"
+                        BorderBrush="Red" 
+                        BorderThickness="1">
+            <Grid Margin="0" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="uiModalTitle" 
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center" 
+                               Foreground="White" 
+                               FontSize="40"
+                               FontFamily="{StaticResource Montserrat-Light}"
+                               Content="asdf"/>
+                <Label x:Name="uiModalMessage" 
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               FontSize="30"
+                               HorizontalAlignment="Center" 
+                               FontFamily="{StaticResource Montserrat-Regular}"
+                               Foreground="White"
+                               Content="asdfa"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

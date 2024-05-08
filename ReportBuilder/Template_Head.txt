@@ -1,0 +1,64 @@
+﻿<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            background: #FEFEFE;
+            color: #184467;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 300;
+            text-align: center;
+            color: #184467;
+            text-transform: uppercase;
+			margin-bottom: 25px;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 18px;
+            border-bottom: 1px solid #184467 !important;
+            color: #184467;
+            text-transform: uppercase;
+        }
+
+        h5 {
+            font-weight: 400;
+            font-size: 14px;
+            color: #30A7D6 !important;
+            text-transform: uppercase;
+        }
+
+        div.border {
+            border-color: #184467 !important;
+        }
+
+        .emphasis-red {
+            color: #CF1710!important;
+        }
+
+        .emphasis-green {
+            color: #1DB051!important;
+        }
+
+        .emphasis-blue {
+            color: #0A131B!important;
+        }
+
+        .detail {
+            color: #0A131B;
+        }
+
+        .timestamp {
+			font-weight: 300;
+            color: #30A7D6;
+        }
+
+        .blank-line {
+        }
+    </style>
+</head>

@@ -1,0 +1,4 @@
+﻿			<div class="row">
+               <div class="col col-sm-2 timestamp">[[^TIMESTAMP^]]</div>
+               <div class="col col-sm-8 detail[[^EMPHASISCOLOR^]]">[[^DETAIL^]]</div>
+           </div>

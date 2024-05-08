@@ -1,0 +1,4 @@
+﻿			<div class="row">
+				<h5 class="col col-sm-2 mt-2[[^EMPHASISCOLOR^]]">[[^TITLE^]]</h5>
+				<div class="col col-sm-8 mt-2[[^EMPHASISCOLOR^]]">[[^DETAIL^]]</div>
+			</div>

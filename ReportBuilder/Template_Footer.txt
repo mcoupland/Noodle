@@ -1,0 +1,2 @@
+﻿			<h3 class="mt-5">[[^TEXT^]] </h3>
+			<h3><small class="text-muted">[[^TIMESPAN^]]</small></h3>
